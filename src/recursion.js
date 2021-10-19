@@ -7,16 +7,76 @@
 // Example: 5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5); // 120
 var factorial = function(n) {
+
+  // handle negative input
+  if (n < 0) {
+    return null;
+  }
+  // base case - return 1
+  else if (n <= 1){
+    return 1;
+  }
+  // recursive case
+  else {
+    return n * factorial(n-1);
+  }
 };
 
 // 2. Compute the sum of an array of integers.
 // sum([1,2,3,4,5,6]); // 21
 var sum = function(array) {
+
+  // copy input array
+  var copy = array.slice();
+
+  // base case (length === 0)
+  if (copy.length === 0) {
+    return 0;
+  }
+  // recursive case (length > 0) -- pop() & pass shortened array
+  else {
+    return copy.pop() + sum(copy);
+  }
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
+
+  // copy input aray and declare variables
+  var copy = array.slice();
+  var sum = 0;
+  var nestedElements = [];
+
+  // iterate through each item in array
+  for (let i = 0; i < copy.length; i++) {
+
+    // if the item is NOT an array, add to sum
+    if (!Array.isArray(copy[i]))
+    {
+      sum += copy[i];
+    }
+    // if the item IS an array, de-nest one layer and add to nestedElement array
+    else {
+
+      for (let j = 0; j < copy[i].length; j++) {
+        nestedElements.push(copy[i][j]);
+      }
+    }
+  }
+
+  // base case (array input is flat) - return the sum of array
+  if (nestedElements.length === 0) {
+    return sum;
+  }
+  // recursive case (nested elements found) - return sum + pass nested items recursively
+  else {
+    return sum + arraySum(nestedElements);
+  }
+
+
+  // return sum of flat items, pass arrays to arraySum()
+
 };
 
 // 4. Check if a number is even.
