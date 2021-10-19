@@ -73,14 +73,35 @@ var arraySum = function(array) {
   else {
     return sum + arraySum(nestedElements);
   }
-
-
-  // return sum of flat items, pass arrays to arraySum()
-
 };
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+
+  // deal with negative ints
+  n = Math.abs(n);
+
+  // base case (n < 2)
+  if (n < 2) {
+
+    // check for even/odd
+    if (n === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  // recursive case (n > 2) - reduce n and pass recursively
+  else {
+    return isEven(n-2);
+  }
+
+
+  // base case (n < 2)
+  if (n === 0) {
+    return true;
+  }
+  // recursive case (n > 2)
 };
 
 // 5. Sum all integers below a given integer.
