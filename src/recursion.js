@@ -116,6 +116,31 @@ var isEven = function(n) {
 // sumBelow(7); // 21
 // =======================================================================
 var sumBelow = function(n) {
+
+  // n is a positive int
+  if (n >= 0) {
+
+    // base case (n === 1)
+    if (n <= 1) {
+      return 0;
+    }
+    // recursive case (n > 1)
+    else {
+      return (n-1) + sumBelow(n-1);
+    }
+  }
+  // n is a negative int
+  else {
+
+    // base case (n === -1)
+    if (n >= -1) {
+      return 0;
+    }
+    // recursive case (n > 1)
+    else {
+      return (n+1) + sumBelow(n+1);
+    }
+  }
 };
 
 
