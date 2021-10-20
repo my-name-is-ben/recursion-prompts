@@ -262,6 +262,22 @@ var reverse = function(string) {
 // 10. Write a function that determines if a string is a palindrome.
 // =======================================================================
 var palindrome = function(string) {
+
+  // convert to lowercase and remove spaces
+  string = string.toLowerCase();
+  string.replace(' ', '');
+
+  // base cases (<2 letters remaining)
+  if (string.length === 0) {
+    return true;
+  } else if (string.length === 1) {
+    return true;
+  }
+  // recursive case (2, more letter remaining)(check edges and move toward middle)
+  else {
+
+    return ((string[0] === string[string.length - 1]) && palindrome(string.slice(1, -1)));
+  }
 };
 
 
