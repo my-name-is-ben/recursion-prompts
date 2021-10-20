@@ -289,6 +289,29 @@ var palindrome = function(string) {
 // modulo(22,6) // 4
 // =======================================================================
 var modulo = function(x, y) {
+
+  // edge cases
+  // if (y === 0) {
+  //   return NaN;
+  // }
+  // if (x === 0) {
+  //   return 0;
+  // }
+  // if (y === 1 || y === -1) {
+  //   return 0;
+  // }
+  // if (x < y) {
+  //   return x;
+  // }
+
+  //  base case
+  // if ((x - y) < y) {
+  //   return (x - y);
+  // }
+  // recursive case (x > y)
+  // else {
+  //   return modulo((x - y), y);
+  // }
 };
 
 
@@ -398,6 +421,19 @@ var countKeysInObj = function(obj, key) {
 // countValuesInObj(obj, 'e') // 1
 // =======================================================================
 var countValuesInObj = function(obj, value) {
+
+  var count = 0;
+
+  for (let key in obj) {
+    if (obj[key] === value) {
+      count++;
+    }
+    else if (typeof obj[key] === 'object') {
+      count = count + countValuesInObj(obj[key], value);
+    }
+  }
+
+  return count;
 };
 
 
@@ -406,6 +442,17 @@ var countValuesInObj = function(obj, value) {
 // them to a provided new name while preserving the value stored at that key.
 // =======================================================================
 var replaceKeysInObj = function(obj, oldKey, newKey) {
+
+  // iterate through obj
+    // if key = oldKey
+      // save the value/obj in temp
+      // delete the old key
+      // add the new key and saved value
+
+    // if key[value] is an object (is separate loop needed???)
+      // recursiveCall on that object
+
+  // return original object (which should be mutated)
 };
 
 
