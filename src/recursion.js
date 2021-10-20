@@ -222,6 +222,23 @@ var exponent = function(base, exp) {
 // powerOfTwo(10); // false
 // =======================================================================
 var powerOfTwo = function(n) {
+
+  // base case (we hit n === 1 or n < 1)
+  if (n <= 1) {
+
+    // (n === 1)(i.e. 2^0)
+    if (n === 1) {
+      return true;
+    }
+    // (n < 1)(i.e. not a power of 2)
+    else {
+      return false;
+    }
+  }
+  // recursive case (n > 1)
+  else {
+    return powerOfTwo(n / 2);
+  }
 };
 
 
