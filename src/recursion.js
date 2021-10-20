@@ -443,16 +443,25 @@ var countValuesInObj = function(obj, value) {
 // =======================================================================
 var replaceKeysInObj = function(obj, oldKey, newKey) {
 
-  // iterate through obj
-    // if key = oldKey
-      // save the value/obj in temp
-      // delete the old key
-      // add the new key and saved value
+  // iterate through object and replace keys
+  for (let key in obj) {
 
-    // if key[value] is an object (is separate loop needed???)
-      // recursiveCall on that object
+    if (key === oldKey) {
+      var temp = obj[key];
+      delete obj[key];
+      obj[newKey] = temp;
+    }
+  }
 
-  // return original object (which should be mutated)
+  // iterate through object and pass any nested object to recursive function
+  for (let key in obj) {
+
+    if (typeof obj[key] === 'object') {
+      replaceKeysInObj(obj[key], oldKey, newKey);
+    }
+  }
+
+  return obj;
 };
 
 
