@@ -149,6 +149,29 @@ var sumBelow = function(n) {
 // range(2,9); // [3,4,5,6,7,8]
 // =======================================================================
 var range = function(x, y) {
+
+  var array = [];
+
+  // filter bad input (no ints between x,y) AND satisfy base case (x === y-1)
+  if ((x - y) === -1 || (x - y) === 0 || (x - y) === 1) {
+    return array;
+  }
+  // recursive case
+  else {
+
+    // (x < y)
+    if (x < y) {
+      array.push(x+1);
+      array = array.concat(range(x+1, y));
+      return array;
+    }
+    // (x > y)
+    else {
+      array.push(x-1);
+      array = array.concat(range(x-1, y));
+      return array;
+    }
+  }
 };
 
 
